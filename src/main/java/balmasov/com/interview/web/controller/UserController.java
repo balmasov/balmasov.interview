@@ -4,10 +4,7 @@ import balmasov.com.interview.service.UserService;
 import balmasov.com.interview.web.response.UserResponseDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.constraints.NotBlank;
 import java.util.List;
@@ -26,5 +23,10 @@ public class UserController {
     public List<UserResponseDto> getUserByLogin(
             @RequestParam(value = "logins", required = false) List<@NotBlank String> logins) {
         return userService.findUsersByLogin(logins);
+    }
+
+    @PostMapping(value = "/adreses")
+    public List<?> getUserAdreses() {
+        return null;
     }
 }

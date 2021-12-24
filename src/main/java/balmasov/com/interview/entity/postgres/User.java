@@ -6,12 +6,13 @@ import lombok.ToString;
 import lombok.experimental.Accessors;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Data
 @Entity
 @Accessors(chain = true)
-@ToString
-@EqualsAndHashCode()
+@ToString(exclude = "adresses")
+@EqualsAndHashCode(exclude = "adresses")
 @Table(name = "users", schema = "test")
 public class User {
 
@@ -34,4 +35,8 @@ public class User {
 
     @Column(name = "email")
     private String email;
+
+    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY,
+            cascade = {CascadeType.ALL}, orphanRemoval = true)
+    private List<Adress> adresses;
 }

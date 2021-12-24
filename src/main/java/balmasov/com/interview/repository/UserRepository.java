@@ -11,7 +11,7 @@ import java.util.List;
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {
 
-    @Query("SELECT distinct user " +
+    @Query("SELECT user " +
             "FROM User user " +
             "WHERE user.login IN (:login)")
     List<User> findUserByLogin(@Param("login") List<String> login);
